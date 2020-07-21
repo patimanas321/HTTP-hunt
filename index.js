@@ -1,12 +1,11 @@
 const dotEnv = require("dotenv");
 const Transport = require('./src/Transport');
-const Challenge = require('./src/Challenge');
+const Game = require('./src/Game');
 
 dotEnv.config();
 Transport.config();
 
 async function Start() {
-    const challenge = await Challenge.getNextChallenge();
-    console.log(challenge);
+    await Game.play();
 }
 Start();

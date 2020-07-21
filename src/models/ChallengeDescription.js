@@ -1,4 +1,4 @@
-class ChallengeResponse {
+class ChallengeDescription {
     stage;
     statement;
     instructions;
@@ -16,4 +16,4 @@ class ChallengeResponse {
     }
 }
 
-module.exports = ChallengeResponse;
+module.exports = ChallengeDescription;

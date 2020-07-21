@@ -19,8 +19,7 @@ function decryptChar(char, key) {
         // Handle rotation
         if (isUpperCaseLetter && charCode < upperCaseStart) {
             charCode = upperCaseEnd - (upperCaseStart - charCode) + 1;
-        }
-        if (isLowerCaseLetter && charCode < lowerCaseStart) {
+        } else if (isLowerCaseLetter && charCode < lowerCaseStart) {
             charCode = lowerCaseEnd - (lowerCaseStart - charCode) + 1;
         }
 
