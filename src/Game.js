@@ -1,6 +1,8 @@
 const ChallengeService = require('./services/ChallengeService');
 const decryptMessage = require('./helpers/decryptMessage');
 const findHiddenTools = require('./helpers/findHiddenTools');
+const sortToolsOnUsage = require('./helpers/sortToolsOnUsage');
+const whichToolsToCarry = require('./helpers/whichToolsToCarry');
 
 class Game {
     static async play() {
@@ -10,8 +12,11 @@ class Game {
         // await this.getNextChallenge();
         // await this.stageTwo();
 
+        // await this.getNextChallenge();
+        // await this.stageThree();
+
         await this.getNextChallenge();
-        await this.stageThree();
+        await this.stageFour();
     }
 
     static async getNextChallenge() {
@@ -32,7 +37,7 @@ class Game {
         const response = await ChallengeService.completePreviousChallenge({
             message: decryptedMessage
         });
-        console.log(response);
+        this.printSuccessMessage(response.data.message);
     }
 
     static printStageOneDescription(challenge) {
@@ -50,7 +55,7 @@ class Game {
         const response = await ChallengeService.completePreviousChallenge({
             toolsFound: hiddenTools
         });
-        printSuccessMessage(response.data.message);
+        this.printSuccessMessage(response.data.message);
     }
 
     static printStageTwoDescription(challenge) {
@@ -63,18 +68,43 @@ class Game {
     static async stageThree() {
         const challenge = await ChallengeService.getNextChallenge();
         this.printStageThreeDescription(challenge);
-        // const hiddenTools = findHiddenTools(challenge.hiddenTools, challenge.tools);
-        // console.log('HIDDEN TOOLS : ', JSON.stringify(hiddenTools));
+        const sortedToolsOnUsage = sortToolsOnUsage(challenge.toolUsage);
+        console.log('TOOLS SORTED AS PER USAGE : ', JSON.stringify(sortedToolsOnUsage));
 
-        // const response = await ChallengeService.completePreviousChallenge({
-        //     toolsFound: hiddenTools
-        // });
-        // printSuccessMessage(response.data.message);
+        const response = await ChallengeService.completePreviousChallenge({
+            toolsSortedOnUsage: sortedToolsOnUsage
+        });
+        this.printSuccessMessage(response.data.message);
     }
 
     static printStageThreeDescription(challenge) {
         console.log(`***************************** YOUR TASK *****************************`);
-        console.log(`Tool Usage: ${JSON.stringify(challenge.toolUsage)}`);
+        console.log('Tools Usage:');
+        for (const toolUsage of challenge.toolUsage) {
+            console.log(JSON.stringify(toolUsage));
+        }
+        console.log('*********************************************************************');
+    }
+
+    static async stageFour() {
+        const challenge = await ChallengeService.getNextChallenge();
+        this.printStageFourDescription(challenge);
+        const toolsToCarry = whichToolsToCarry(challenge.tools, challenge.maximumWeight);
+        console.log('TOOLS SHE SHOULD CARRY : ', JSON.stringify(toolsToCarry));
+
+        const response = await ChallengeService.completePreviousChallenge({
+            toolsToTakeSorted: toolsToCarry
+        });
+        this.printSuccessMessage(response.data.message);
+    }
+
+    static printStageFourDescription(challenge) {
+        console.log(`***************************** YOUR TASK *****************************`);
+        console.log('Tools : ');
+        for (const tool of challenge.tools) {
+            console.log(JSON.stringify(tool));
+        }
+        console.log(`Maximum Weight : ${challenge.maximumWeight}`);
         console.log('*********************************************************************');
     }
 
