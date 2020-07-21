@@ -5,18 +5,32 @@ const sortToolsOnUsage = require('./helpers/sortToolsOnUsage');
 const whichToolsToCarry = require('./helpers/whichToolsToCarry');
 
 class Game {
-    static async play() {
-        //await this.getNextChallenge();
-        //await this.stageOne();
+    static async play(stage = 1) {
+        switch (stage) {
+            case 1:
+                await this.getNextChallenge();
+                await this.stageOne();
+                break;
 
-        // await this.getNextChallenge();
-        // await this.stageTwo();
+            case 2:
+                await this.getNextChallenge();
+                await this.stageTwo();
+                break;
 
-        // await this.getNextChallenge();
-        // await this.stageThree();
+            case 3:
+                await this.getNextChallenge();
+                await this.stageThree();
+                break;
 
-        await this.getNextChallenge();
-        await this.stageFour();
+            case 4:
+                await this.getNextChallenge();
+                await this.stageFour();
+                break;
+
+            default:
+                console.log('Please Pass a valid stage Number. >>>>>>>>>>>>>>>>>>>>>>>>>>')
+                break;
+        }
     }
 
     static async getNextChallenge() {
