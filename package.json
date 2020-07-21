@@ -1,0 +1,25 @@
+{
+  "name": "http-hunt",
+  "version": "1.0.0",
+  "description": "THOUGHT WORKS Assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patimanas321/HTTP-hunt.git"
+  },
+  "author": "patimanas321@yahoo.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patimanas321/HTTP-hunt/issues"
+  },
+  "homepage": "https://github.com/patimanas321/HTTP-hunt#readme",
+  "dependencies": {
+    "@types/node": "^14.0.24",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0"
+  }
+}
