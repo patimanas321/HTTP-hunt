@@ -4,7 +4,7 @@ This is a HTTP Rest based game.
 
 ## Installation
 
-make sure you have Node.js installed.
+Make sure you have Node.js installed.
 
 ```bash
 npm install
