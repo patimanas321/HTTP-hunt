@@ -1,3 +1,8 @@
+/**
+ * Sort tools on their Value and fit in maximum weight
+ * @param {any[]} tools 
+ * @param {number} maxWeight 
+ */
 function whichToolsToCarry(tools, maxWeight) {
     tools.sort((priv, next) => next.value - priv.value);
     console.log(tools);

@@ -1,3 +1,7 @@
+/**
+ * Sort Tools for Lara based on their usage time
+ * @param {any[]} toolsUsage 
+ */
 function sortToolsOnUsage(toolsUsage) {
     const totalUsedTime = {};
     for (const toolUsage of toolsUsage) {
@@ -19,6 +23,11 @@ function sortToolsOnUsage(toolsUsage) {
     return resp;
 }
 
+/**
+ * Calculate Time difference between Two date values
+ * @param {string} startTime 
+ * @param {string} endTime 
+ */
 function getTimeDifferenceInMinutes(startTime, endTime) {
     const diff = Math.abs(new Date(startTime) - new Date(endTime));
     return Math.floor((diff / 1000) / 60);

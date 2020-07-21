@@ -1,3 +1,7 @@
+/**
+ * Game Engine
+ */
+
 const ChallengeService = require('./services/ChallengeService');
 const decryptMessage = require('./helpers/decryptMessage');
 const findHiddenTools = require('./helpers/findHiddenTools');
@@ -28,7 +32,7 @@ class Game {
                 break;
 
             default:
-                console.log('Please Pass a valid stage Number. >>>>>>>>>>>>>>>>>>>>>>>>>>')
+                console.log('Please Pass a valid stage Number. >>>>>>>>>>>>>>>>>>>>>>>>>>');
                 break;
         }
     }

@@ -1,3 +1,8 @@
+/**
+ * Find all hidden tools
+ * @param {string} hiddenTools 
+ * @param {string[]} tools 
+ */
 function findHiddenTools(hiddenTools, tools) {
     const availableChars = {};
     for (const char of hiddenTools) {
@@ -13,6 +18,11 @@ function findHiddenTools(hiddenTools, tools) {
     return res;
 }
 
+/**
+ * Check if tool exists in hidden tools
+ * @param {Object} availableChars 
+ * @param {string} tool 
+ */
 function findATool(availableChars, tool) {
     for (const char of tool) {
         if (availableChars[char]) {

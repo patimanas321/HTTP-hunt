@@ -1,7 +1,17 @@
+/**
+ * Decrypt a Message for Lara
+ * @param {string} encryptedMessage 
+ * @param {number} key 
+ */
 function decryptMessage(encryptedMessage, key) {
     return [...encryptedMessage].map(char => decryptChar(char, key)).join('');
 }
 
+/**
+ * Decrypt a single character
+ * @param {string} char 
+ * @param {number} key 
+ */
 function decryptChar(char, key) {
     const upperCaseStart = 65;
     const upperCaseEnd = 90;

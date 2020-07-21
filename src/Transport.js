@@ -1,3 +1,7 @@
+/**
+ * Class used to make all REST calls in the application
+ */
+
 const axios = require('axios');
 
 class Transport {

@@ -1,3 +1,7 @@
+/**
+ * Service to connect to game REST
+ */
+
 const Transport = require('../Transport');
 const ChallengeDescription = require('../models/ChallengeDescription');
 
